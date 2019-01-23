@@ -4,6 +4,10 @@ export type counterStateType = {
   +counter: number
 };
 
+export type messageType = {
+  +message: string
+}
+
 export type Action = {
   +type: string
 };

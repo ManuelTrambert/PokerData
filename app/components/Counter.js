@@ -1,19 +1,16 @@
 // @flow
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import styles from './Counter.css';
+import { withStyles } from '@material-ui/core/styles';
 import routes from '../constants/routes.json';
 
-type Props = {
-  increment: () => void,
-  incrementIfOdd: () => void,
-  incrementAsync: () => void,
-  decrement: () => void,
-  counter: number
-};
+const Counter = class Counter extends Component {
 
-export default class Counter extends Component<Props> {
-  props: Props;
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     const {
@@ -21,13 +18,14 @@ export default class Counter extends Component<Props> {
       incrementIfOdd,
       incrementAsync,
       decrement,
-      counter
+      print_string,
+      counter,
     } = this.props;
     return (
       <div>
         <div className={styles.backButton} data-tid="backButton">
           <Link to={routes.HOME}>
-            <i className="fa fa-arrow-left fa-3x" />
+            <i className="fa fa-arrow-left fa-3x"/>
           </Link>
         </div>
         <div className={`counter ${styles.counter}`} data-tid="counter">
@@ -40,7 +38,7 @@ export default class Counter extends Component<Props> {
             data-tclass="btn"
             type="button"
           >
-            <i className="fa fa-plus" />
+            <i className="fa fa-plus"/>
           </button>
           <button
             className={styles.btn}
@@ -48,7 +46,7 @@ export default class Counter extends Component<Props> {
             data-tclass="btn"
             type="button"
           >
-            <i className="fa fa-minus" />
+            <i className="fa fa-minus"/>
           </button>
           <button
             className={styles.btn}
@@ -66,8 +64,30 @@ export default class Counter extends Component<Props> {
           >
             async
           </button>
+          <button
+            className={styles.btn}
+            onClick={() => print_string('test')}
+            data-tclass="btn"
+            type="button"
+          >
+            print
+          </button>
         </div>
       </div>
     );
   }
-}
+};
+
+Counter.propTypes = {
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  incrementIfOdd: PropTypes.func.isRequired,
+  incrementAsync: PropTypes.func.isRequired,
+  print_string: PropTypes.func.isRequired,
+  print_empty: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+};
+
+
+export default withStyles(styles)(Counter);
