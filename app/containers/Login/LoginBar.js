@@ -10,16 +10,13 @@ const LoginBar = class LoginBar extends Component {
   }
 
   render() {
-    const { onSubmit, submitting, authError, version, isCheckingUpdate, isUpdating } = this.props;
+    const { onSubmit, submitting, authError } = this.props;
 
     return(
       <LoginBarComp
         onSubmit={onSubmit}
         submitting={submitting}
         authError={authError}
-        version={version}
-        isCheckingUpdate={isCheckingUpdate}
-        isUpdating={isUpdating}
       />
     );
   }
@@ -29,9 +26,6 @@ LoginBar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   authError: PropTypes.bool.isRequired,
-  version: PropTypes.string.isRequired,
-  isCheckingUpdate: PropTypes.bool.isRequired,
-  isUpdating: PropTypes.bool.isRequired,
 };
 
 LoginBar.defaultProps = {
@@ -40,11 +34,6 @@ LoginBar.defaultProps = {
 
 const mapStateToProps = (state) => {
   return ({
-    submitting: state.form.loginForm.submitting,
-    authError: state.auth.authentication_error,
-    version: state.update.version,
-    isCheckingUpdate: state.update.isCheckingUpdate,
-    isUpdating: state.update.isUpdating,
   });
 }
 

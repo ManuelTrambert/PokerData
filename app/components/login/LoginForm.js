@@ -1,8 +1,7 @@
-// @flow
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Field, reduxForm} from 'redux-form';
-import {withStyles} from '@material-ui/core/styles';
+import { Field, reduxForm } from 'redux-form';
+import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -10,8 +9,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import validate from '../../helpers/validateLogin';
-import {createMuiTheme} from '@material-ui/core';
-
+import { createMuiTheme } from '@material-ui/core';
 
 const styles = theme => ({
   input: {
@@ -95,31 +93,18 @@ const renderButton = ({
   </Button>
 );
 
-const renderCheckbox = ({input, label, classes}) => (
+const renderCheckbox = ({ input, label, classes }) => (
   <FormGroup row>
     <FormControlLabel
-      control={<Checkbox onChange={input.onChange}/>}
+      control={<Checkbox onChange={input.onChange} />}
       label={label}
     />
   </FormGroup>
 );
 
-
-const LoginForm = class LoginForm extends Component {
-
+class LoginForm extends Component {
   submit = values => {
     this.props.onSubmit(values);
-  };
-
-  state = {
-    username: '',
-    password: ''
-  };
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
   };
 
   render() {
@@ -129,7 +114,7 @@ const LoginForm = class LoginForm extends Component {
         <div>
           <Field
             name="identifier"
-            {...{classes: classes}}
+            {...{ classes: classes }}
             component={renderTextField}
             label="Identifiant"
             authError={this.props.authError}
@@ -137,9 +122,9 @@ const LoginForm = class LoginForm extends Component {
         </div>
         <div>
           <Field
-            {...{classes: classes}}
+            {...{ classes: classes }}
             name="password"
-            props={{className: classes.input}}
+            props={{ className: classes.input }}
             component={renderTextField}
             label="Mot de passe"
             type="password"
@@ -152,7 +137,7 @@ const LoginForm = class LoginForm extends Component {
           label="Mémoriser mon identifiant"
         />
         <Field
-          {...{classes: classes}}
+          {...{ classes: classes }}
           name="submit"
           component={renderButton}
           label="Se connecter"
@@ -160,14 +145,11 @@ const LoginForm = class LoginForm extends Component {
           color="primary"
           type="submit"
           className={classes.btnConnect}
-          disabled={
-            this.props.submitting
-          }
         />
       </form>
     );
   }
-};
+}
 
 LoginForm.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -177,12 +159,10 @@ LoginForm.propTypes = {
   authError: PropTypes.bool.isRequired,
 };
 
-
-const styled = withStyles(styles, {name: 'LoginForm'})(LoginForm);
+const styled = withStyles(styles, { name: 'LoginForm' })(LoginForm);
 const withForm = reduxForm({
   form: 'loginForm',
   validate
 })(styled);
-
 
 export default withForm;

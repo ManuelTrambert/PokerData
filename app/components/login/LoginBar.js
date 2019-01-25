@@ -8,7 +8,7 @@ import LoginForm from './LoginForm';
 
 const styles = theme => ({
   loginBarBox: {
-    marginTop: '40%',
+    marginTop: '70%',
     paddingLeft: '2%',
     paddingRight: '2%'
   },

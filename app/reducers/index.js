@@ -1,13 +1,12 @@
-// @flow
+import { reducer as reduxFormReducer } from 'redux-form';
 import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
-import counter from './counter';
-import print from './print';
+import auth from './auth';
 
 const rootReducer = combineReducers({
-  print,
-  counter,
-  router
+  router,
+  auth,
+  form: reduxFormReducer,
 });
 
 export default rootReducer;
