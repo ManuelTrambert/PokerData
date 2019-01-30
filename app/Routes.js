@@ -5,11 +5,15 @@ import routes from './constants/routes.json';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 import LoginForm from './containers/Login/Loadable';
+import RegisterForm from './containers/Registration/Loadable';
+import DashboardPage from './containers/Dashboard/Loadable';
 
 export default () => (
   <App>
     <Switch>
-      <Route path={routes.COUNTER} component={LoginForm} />
+      <Route path={routes.LOGIN} component={LoginForm} />
+      <Route path={routes.REGISTER} component={RegisterForm} />
+      <Route path={routes.DASHBOARD} component={DashboardPage} />
       <Route path={routes.HOME} component={HomePage} />
     </Switch>
   </App>

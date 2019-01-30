@@ -44,6 +44,7 @@ const LoginBar = class LoginBar extends Component {
           <Typography variant="h6">SE CONNECTER</Typography>
           <div className={classes.loginForm}>
             <LoginForm
+              classes={classes}
               onSubmit={onSubmit}
               submiting={submitting}
               authError={authError}
