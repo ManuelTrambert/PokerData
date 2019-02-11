@@ -9,21 +9,28 @@ const DashboardBar = class DashboardBar extends Component {
   }
 
   render() {
-    const {} = this.props;
+    const {rows, rowsPerPage, page} = this.props;
 
     return(
       <DashboardBarComp
+        rows={rows}
+        rowsPerPage={rowsPerPage}
+        page={page}
       />
     );
   }
 }
 
 DashboardBar.propTypes = {
+  rows: PropTypes.object.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired
 };
 
 DashboardBar.defaultProps = {};
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return ({});
 };
 

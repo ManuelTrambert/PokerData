@@ -1,5 +1,12 @@
 import produce from 'immer';
-import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR } from '../actions/auth';
+import { push } from 'react-router-redux';
+import {AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR} from '../actions/auth';
+
+function auth(draftState, credentials) {
+  draftState.authenticated = true;
+  draftState.authentication_error = false;
+  console.log(credentials);
+}
 
 function unauth(draftState) {
   draftState.authenticated = false;

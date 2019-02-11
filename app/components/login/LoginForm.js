@@ -17,7 +17,8 @@ const styles = theme => ({
   },
   btnConnect: {
     width: '100%',
-    marginTop: '10%'
+    marginTop: '15%',
+    marginBottom: '15%',
   },
   inputFocused: {
     '&:after': {
@@ -155,7 +156,7 @@ LoginForm.propTypes = {
   classes: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired,
+  //submitting: PropTypes.bool.isRequired,
   authError: PropTypes.bool.isRequired,
 };
 

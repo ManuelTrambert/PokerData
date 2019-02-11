@@ -17,7 +17,7 @@ const styles = theme => ({
     zIndex: 10,
     backgroundColor: theme.palette.primary.contrastText,
     borderLeft: '1px solid #0a0b0d',
-    marginTop: 100,
+    marginTop: 10,
   },
   fill: {
     flexGrow: 1,

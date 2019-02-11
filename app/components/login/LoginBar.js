@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Fade from '@material-ui/core/Fade';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -8,7 +8,7 @@ import LoginForm from './LoginForm';
 
 const styles = theme => ({
   loginBarBox: {
-    marginTop: '70%',
+    marginTop: '30%',
     paddingLeft: '2%',
     paddingRight: '2%'
   },
@@ -16,7 +16,7 @@ const styles = theme => ({
     marginTop: '20%'
   },
   loginForm: {
-    marginTop: '10%'
+    marginTop: '2%'
   },
   fadeBox: {
     display: 'flex',
@@ -35,7 +35,7 @@ const LoginBar = class LoginBar extends Component {
     const {
       classes,
       onSubmit,
-      submitting,
+      //submitting,
       authError,
     } = this.props;
     return (
@@ -46,32 +46,9 @@ const LoginBar = class LoginBar extends Component {
             <LoginForm
               classes={classes}
               onSubmit={onSubmit}
-              submiting={submitting}
               authError={authError}
             />
           </div>
-          <div className={classes.fadeBox}>
-            <Fade
-              in={submitting}
-              style={{
-                transitionDelay: submitting ? '500ms' : '0ms'
-              }}
-              unmountOnExit
-            >
-              <CircularProgress color="secondary" />
-            </Fade>
-          </div>
-          <Fade
-            in={authError && !submitting}
-            style={{
-              transitionDelay: authError ? '500ms' : '0ms'
-            }}
-            unmountOnExit
-          >
-            <Typography variant="subtitle1" color="error">
-              Identifiant ou mot de passe incorrect
-            </Typography>
-          </Fade>
         </div>
       </div>
     );
@@ -81,7 +58,6 @@ const LoginBar = class LoginBar extends Component {
 LoginBar.propTypes = {
   classes: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool.isRequired,
   authError: PropTypes.bool.isRequired,
 };
 

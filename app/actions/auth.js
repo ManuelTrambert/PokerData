@@ -1,8 +1,9 @@
 import api, {setAuthToken, unsetAuthToken} from '../api';
 import {startSubmit, stopSubmit} from 'redux-form';
-import { push } from 'react-router-redux';
+import {push} from 'react-router-redux';
 //import { USER_SELECTED } from './profile';
 import {bcrypt} from 'bcrypt-pbkdf';
+
 export const AUTHENTICATED = 'authenticated_user';
 export const UNAUTHENTICATED = 'unauthenticated_user';
 export const AUTHENTICATION_ERROR = 'authentication_error';
@@ -15,24 +16,13 @@ export function login({identifier, password}) {
         username: identifier,
         password
       });
-      /*dispatch({
-        type: AUTHENTICATED,
-        payload: { identifier, avatarUrl: res.data.avatar }
-      });
       dispatch({
-        type: USER_SELECTED,
-        username: identifier
-      });*/
+        type: AUTHENTICATED,
+        payload: {identifier}
+      });
       localStorage.setItem('userToken', res.data);
       setAuthToken(res.data);
-      //console.log('here');
-      //browserHistory.push('/dashboard');
-      //console.log('ici');
-      /*dispatch(
-        emitMessage('register', {
-          token: res.data.token
-        })
-      );*/
+      dispatch(push('/dashboard'));
     } catch(error) {
       console.log('la', error);
       dispatch({
@@ -41,19 +31,8 @@ export function login({identifier, password}) {
       });
     }
     dispatch(stopSubmit('loginForm'));
-    if (localStorage.getItem('userToken') !== 'error') {
-      dispatch(push('/dashboard'));
-    }
   };
 }
-
-/*export function logout() {
-  localStorage.clear();
-  unsetAuthToken();
-  return {
-    type: UNAUTHENTICATED
-  };
-}*/
 
 export function register({identifier, password, email, firstname, lastname}) {
   return async dispatch => {

@@ -4,9 +4,9 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import DashboardArray from './DashboardArray';
 
+
 const styles = theme => ({
   loginBarBox: {
-    marginTop: '70%',
     paddingLeft: '2%',
     paddingRight: '2%'
   },
@@ -21,7 +21,7 @@ const styles = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     marginTop: '5%'
-  }
+  },
 });
 
 const DashboardBar = class DashboardBar extends Component {
@@ -32,13 +32,22 @@ const DashboardBar = class DashboardBar extends Component {
   render() {
     const {
       classes,
+      rows,
+      rowsPerPage,
+      page
     } = this.props;
+
     return (
       <div>
         <div className={classes.loginBarBox}>
           <Typography variant="h6">DASHBOARD</Typography>
-          <div className={classes.loginForm}>
-            <DashboardArray/>
+          <div>
+            <DashboardArray
+              classes={classes}
+              rows={rows}
+              rowsPerPage={rowsPerPage}
+              page={page}
+            />
           </div>
         </div>
       </div>
@@ -48,6 +57,9 @@ const DashboardBar = class DashboardBar extends Component {
 
 DashboardBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  rows: PropTypes.object.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+  page: PropTypes.number.isRequired
 };
 
 export default withStyles(styles)(DashboardBar);
