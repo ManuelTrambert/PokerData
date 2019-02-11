@@ -5,7 +5,7 @@ import {AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR} from '../actions/a
 function auth(draftState, credentials) {
   draftState.authenticated = true;
   draftState.authentication_error = false;
-  console.log(credentials);
+  draftState.id = credentials.userId;
 }
 
 function unauth(draftState) {

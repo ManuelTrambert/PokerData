@@ -18,13 +18,12 @@ export function login({identifier, password}) {
       });
       dispatch({
         type: AUTHENTICATED,
-        payload: {identifier}
+        payload: {identifier, userId: res.data.id}
       });
       localStorage.setItem('userToken', res.data);
       setAuthToken(res.data);
       dispatch(push('/dashboard'));
     } catch(error) {
-      console.log('la', error);
       dispatch({
         type: AUTHENTICATION_ERROR,
         payload: 'Invalid email/accountname or password'
