@@ -5,9 +5,9 @@ const initialState = {
     }
   },
   auth: {
+    id: 0,
     authentication_error: false
   },
-  user: {
-    id: 0
-  }
 };
+
+export default initialState;

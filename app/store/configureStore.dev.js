@@ -4,11 +4,11 @@ import { createHashHistory } from 'history';
 import { routerMiddleware, routerActions } from 'react-router-redux';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
+import initialState from './initialState';
 import type { messageType } from '../reducers/types';
 
 const history = createHashHistory();
 
-const configureStore = (initialState?: messageType) => {
   // Redux Configuration
   const middleware = [];
   const enhancers = [];
@@ -59,7 +59,4 @@ const configureStore = (initialState?: messageType) => {
     );
   }
 
-  return store;
-};
-
-export default { configureStore, history };
+export default { store, history };
