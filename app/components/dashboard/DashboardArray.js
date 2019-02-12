@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
-import Paper from "@material-ui/core/es/Paper/Paper";
-import Table from "@material-ui/core/es/Table/Table";
-import TableBody from "@material-ui/core/es/TableBody/TableBody";
-import TableRow from "@material-ui/core/es/TableRow/TableRow";
-import TableCell from "@material-ui/core/es/TableCell/TableCell";
+import Paper from '@material-ui/core/es/Paper/Paper';
+import Table from '@material-ui/core/es/Table/Table';
+import TableBody from '@material-ui/core/es/TableBody/TableBody';
+import TableRow from '@material-ui/core/es/TableRow/TableRow';
+import TableCell from '@material-ui/core/es/TableCell/TableCell';
 import {withStyles} from '@material-ui/core/styles';
-import api from '../../api';
+import TableHead from '@material-ui/core/es/TableHead/TableHead';
 
 const styles = theme => ({
   root: {
@@ -34,12 +34,6 @@ class DashboardArray extends Component {
     this.props.onSubmit(values);
   };
 
-  state = {
-    rows: {},
-    page: 0,
-    rowsPerPage: 5,
-  };
-
   handleChangePage = (event, page) => {
     this.setState({page});
   };
@@ -52,20 +46,30 @@ class DashboardArray extends Component {
     const { rows, rowsPerPage, page } = this.props;
     const classes = this.props.classes;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+    console.log('In dashboard Array : ', rows);
     return (
       <div className={classes.tableParent}>
         <div className={classes.root}>
           <Paper className={classes.root}>
             <div className={classes.tableWrapper}>
               <Table className={classes.table}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="right">Name</TableCell>
+                    <TableCell align="right">Price</TableCell>
+                    <TableCell align="right">Difference</TableCell>
+                    <TableCell align="right">Number of players</TableCell>
+                  </TableRow>
+                </TableHead>
                 <TableBody>
                   {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
                     <TableRow key={row.id}>
-                      <TableCell component="th" scope="row">
-                        {row.name}
+                      <TableCell align="right">
+                        {row.type}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
+                      <TableCell align="right">{row.price}</TableCell>
+                      <TableCell align="right">{row.difference}</TableCell>
+                      <TableCell align="right">{row.nbPlayers}</TableCell>
                     </TableRow>
                   ))}
                   {emptyRows > 0 && (
@@ -101,9 +105,9 @@ class DashboardArray extends Component {
 
 DashboardArray.propTypes = {
   classes: PropTypes.object.isRequired,
-  rows: PropTypes.object.isRequired,
+  rows: PropTypes.array.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired
+  page: PropTypes.number.isRequired,
 };
 
 const styled = withStyles(styles, {name: 'DashboardArray'})(DashboardArray);

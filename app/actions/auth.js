@@ -20,8 +20,8 @@ export function login({identifier, password}) {
         type: AUTHENTICATED,
         payload: {identifier, userId: res.data.id}
       });
-      localStorage.setItem('userToken', res.data);
-      setAuthToken(res.data);
+      localStorage.setItem('userToken', res.data.hash);
+      setAuthToken(res.data.hash);
       dispatch(push('/dashboard'));
     } catch(error) {
       dispatch({

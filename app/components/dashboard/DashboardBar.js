@@ -31,10 +31,10 @@ const DashboardBar = class DashboardBar extends Component {
 
   render() {
     const {
-      classes,
       rows,
+      classes,
       rowsPerPage,
-      page
+      page,
     } = this.props;
 
     return (
@@ -57,7 +57,7 @@ const DashboardBar = class DashboardBar extends Component {
 
 DashboardBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  rows: PropTypes.object.isRequired,
+  rows: PropTypes.array.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired
 };

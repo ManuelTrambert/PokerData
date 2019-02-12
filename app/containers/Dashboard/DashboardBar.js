@@ -1,41 +1,59 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import DashboardBarComp from '../../components/dashboard/DashboardBar';
+import api from '../../api';
 
 const DashboardBar = class DashboardBar extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
-    const {rows, rowsPerPage, page} = this.props;
+  state = {
+    rows: null
+  };
 
-    return(
-      <DashboardBarComp
-        rows={rows}
-        rowsPerPage={rowsPerPage}
-        page={page}
-      />
-    );
+  async getData(userId) {
+    const rows = await api.get(`Tournaments/${userId}/user`);
+    this.setState({rows: rows.data});
   }
-}
+
+  render() {
+    const {userId} = this.props;
+
+    const rowsPerPage = 10;
+    const page = 0;
+    if (this.state.rows) {
+      return (
+        <DashboardBarComp
+          rows={this.state.rows}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          userId={userId}
+        />
+      );
+    }
+    else {
+      this.getData(userId);
+      return (<span></span>);
+    }
+  }
+};
 
 DashboardBar.propTypes = {
-  rows: PropTypes.object.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired
+  userId: PropTypes.number.isRequired
 };
 
 DashboardBar.defaultProps = {};
 
 const mapStateToProps = (state) => {
-  console.log(state);
-  return ({});
+  return ({
+    userId: state.auth.id
+  });
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return({});
+  return ({});
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardBar);

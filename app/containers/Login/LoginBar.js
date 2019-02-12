@@ -33,7 +33,6 @@ LoginBar.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return ({
     authError: state.auth.authentication_error,
     //submitting: state.form.loginForm.submitting,

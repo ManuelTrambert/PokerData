@@ -46,7 +46,6 @@ const styles = theme => ({
 
 const DashboardPage = class DashboardPage extends Component {
   constructor(props) {
-    console.log('DashboardPage');
     super(props);
   }
 
