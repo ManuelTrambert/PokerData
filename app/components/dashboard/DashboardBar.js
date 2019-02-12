@@ -7,14 +7,13 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from "@material-ui/core/es/Fab/Fab";
 import Dialog from "@material-ui/core/es/Dialog/Dialog";
 import Button from "@material-ui/core/es/Button/Button";
-import List from "@material-ui/core/es/List/List";
-import ListItem from "@material-ui/core/es/ListItem/ListItem";
 import AppBar from "@material-ui/core/es/AppBar/AppBar";
 import Toolbar from "@material-ui/core/es/Toolbar/Toolbar";
 import IconButton from "@material-ui/core/es/IconButton/IconButton";
-import ListItemText from "@material-ui/core/es/ListItemText/ListItemText";
 import CloseIcon from '@material-ui/icons/Close';
-import Divider from "@material-ui/core/es/Divider/Divider";
+import DialogContentText from "@material-ui/core/es/DialogContentText/DialogContentText";
+import TextField from "@material-ui/core/es/TextField/TextField";
+import Slide from "@material-ui/core/es/Slide/Slide";
 
 
 const styles = theme => ({
@@ -50,6 +49,10 @@ const styles = theme => ({
   },
 });
 
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
+
 const DashboardBar = class DashboardBar extends Component {
   constructor(props) {
     super(props);
@@ -84,9 +87,11 @@ const DashboardBar = class DashboardBar extends Component {
               <AddIcon />
             </Fab>
             <Dialog
+              fullScreen
               open={this.state.open}
               onClose={this.handleClose}
               aria-labelledby="form-dialog-title"
+              TransitionComponent={Transition}
             >
               <AppBar className={classes.appBar}>
                 <Toolbar>
@@ -101,15 +106,17 @@ const DashboardBar = class DashboardBar extends Component {
                   </Button>
                 </Toolbar>
               </AppBar>
-              <List className={classes.whiteBackground}>
-                <ListItem button>
-                  <ListItemText primary="Phone ringtone" secondary="Titania" />
-                </ListItem>
-                <Divider />
-                <ListItem button>
-                  <ListItemText primary="Default notification ringtone" secondary="Tethys" />
-                </ListItem>
-              </List>
+              <DialogContentText>
+                Ajoute un tournoi :)
+              </DialogContentText>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="Email Address"
+                type="email"
+                fullWidth
+              />
             </Dialog>
           </div>
           <div>

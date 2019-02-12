@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import Fade from '@material-ui/core/Fade';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import RegisterForm from './RegisterForm';
+import Fab from "@material-ui/core/es/Fab/Fab";
+import ArrowBack from '@material-ui/icons/ArrowBack';
 
 const styles = theme => ({
   registerBarBox: {
@@ -36,9 +38,13 @@ const RegisterBar = class RegisterBar extends Component {
       classes,
       onSubmit,
       submitting,
+      previousState
     } = this.props;
     return (
       <div>
+        <Fab color="primary" aria-label="Add" className={classes.fab} onClick={previousState}>
+          <ArrowBack />
+        </Fab>
         <div className={classes.registerBarBox}>
           <Typography variant="h6">S'INSCRIRE</Typography>
           <div className={classes.registerForm}>
@@ -68,6 +74,7 @@ RegisterBar.propTypes = {
   classes: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
+  previousState: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(RegisterBar);
