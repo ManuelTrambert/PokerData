@@ -21,14 +21,10 @@ const DashboardBar = class DashboardBar extends Component {
   render() {
     const {userId} = this.props;
 
-    const rowsPerPage = 10;
-    const page = 0;
     if (this.state.rows) {
       return (
         <DashboardBarComp
           rows={this.state.rows}
-          rowsPerPage={rowsPerPage}
-          page={page}
           userId={userId}
         />
       );

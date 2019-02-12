@@ -42,11 +42,17 @@ class DashboardArray extends Component {
     this.setState({rowsPerPage: event.target.value});
   };
 
+  state = {
+    rows: [],
+    page: 0,
+    rowsPerPage: 5,
+  };
+
   render() {
-    const { rows, rowsPerPage, page } = this.props;
+    const {rows} = this.props;
     const classes = this.props.classes;
-    const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-    console.log('In dashboard Array : ', rows);
+    const emptyRows = this.state.rowsPerPage - Math.min(this.state.rowsPerPage, rows.length - this.state.page * this.state.rowsPerPage);
+    this.state.rows = rows;
     return (
       <div className={classes.tableParent}>
         <div className={classes.root}>
@@ -62,7 +68,7 @@ class DashboardArray extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => (
+                  {rows.slice(this.state.page * this.state.rowsPerPage, this.state.page * this.state.rowsPerPage + this.state.rowsPerPage).map(row => (
                     <TableRow key={row.id}>
                       <TableCell align="right">
                         {row.type}
@@ -84,8 +90,8 @@ class DashboardArray extends Component {
                       rowsPerPageOptions={[5, 10]}
                       colSpan={3}
                       count={rows.length}
-                      rowsPerPage={rowsPerPage}
-                      page={page}
+                      rowsPerPage={this.state.rowsPerPage}
+                      page={this.state.page}
                       SelectProps={{
                         native: true,
                       }}
@@ -106,8 +112,6 @@ class DashboardArray extends Component {
 DashboardArray.propTypes = {
   classes: PropTypes.object.isRequired,
   rows: PropTypes.array.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-  page: PropTypes.number.isRequired,
 };
 
 const styled = withStyles(styles, {name: 'DashboardArray'})(DashboardArray);
