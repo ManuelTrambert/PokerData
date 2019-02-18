@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import DashboardBar from './DashboardBar';
+import MenuBar from '../Menu/index';
 
 const styles = theme => ({
   root: {
@@ -53,7 +54,10 @@ const DashboardPage = class DashboardPage extends Component {
     const { classes } = this.props;
     return(
       <Grid container className={classes.root}>
-        <Grid item xs={12} className={classes.rightContent}>
+        <Grid item xs={2} className={classes.leftContent}>
+          <MenuBar/>
+        </Grid>
+        <Grid item xs={10} className={classes.rightContent}>
           <DashboardBar />
         </Grid>
       </Grid>

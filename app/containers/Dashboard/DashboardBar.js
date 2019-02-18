@@ -10,21 +10,24 @@ const DashboardBar = class DashboardBar extends Component {
   }
 
   state = {
-    rows: null
+    rows: null,
+    userId: 0
   };
 
-  async getData(userId) {
-    const rows = await api.get(`Tournaments/${userId}/user`);
+  async getData() {
+    const rows = await api.get(`Tournaments/${this.state.userId}/user`);
     this.setState({rows: rows.data});
   }
 
   render() {
     const {userId} = this.props;
 
+    this.state.userId = userId;
     if (this.state.rows) {
       return (
         <DashboardBarComp
           rows={this.state.rows}
+          reloadDash={this.getData.bind(this)}
           userId={userId}
         />
       );

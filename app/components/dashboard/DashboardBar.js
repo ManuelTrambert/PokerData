@@ -41,6 +41,8 @@ const DashboardBar = class DashboardBar extends Component {
   render() {
     const {
       rows,
+      userId,
+      reloadDash,
       classes,
     } = this.props;
 
@@ -51,7 +53,8 @@ const DashboardBar = class DashboardBar extends Component {
             <Typography variant="h6" className={classes.headerTitle}>DASHBOARD</Typography>
           </div>
           <div>
-            <PopOverForm/>
+            <PopOverForm userId={userId}
+            reloadDash={reloadDash}/>
           </div>
           <div>
             <DashboardArray
@@ -67,7 +70,8 @@ const DashboardBar = class DashboardBar extends Component {
 
 DashboardBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  rows: PropTypes.array.isRequired,
+  userId: PropTypes.number.isRequired,
+  rows: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(DashboardBar);
