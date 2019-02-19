@@ -4,7 +4,7 @@ import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import DashboardArray from './DashboardArray';
 import PopOverForm from './PopOverForm';
-
+import StatsTool from '../Stats/Stats';
 
 const styles = theme => ({
   loginBarBox: {
@@ -31,6 +31,9 @@ const styles = theme => ({
     alignItems: 'center',
     marginTop: '5%'
   },
+  setFixedHeight: {
+    marginBottom: '30%'
+  }
 });
 
 const DashboardBar = class DashboardBar extends Component {
@@ -47,7 +50,7 @@ const DashboardBar = class DashboardBar extends Component {
     } = this.props;
 
     return (
-      <div>
+      <div className={classes.setFixedHeight}>
         <div className={classes.loginBarBox}>
           <div>
             <Typography variant="h6" className={classes.headerTitle}>DASHBOARD</Typography>
@@ -61,6 +64,7 @@ const DashboardBar = class DashboardBar extends Component {
               classes={classes}
               rows={rows}
             />
+            <StatsTool rows={rows}/>
           </div>
         </div>
       </div>

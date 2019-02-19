@@ -20,9 +20,6 @@ const styles = theme => ({
   table: {
     minWidth: 700,
   },
-  tableParent: {
-    marginBottom: '20%'
-  },
   tableWrapper: {
     overflowX: 'auto',
   },
@@ -54,7 +51,7 @@ class DashboardArray extends Component {
     const emptyRows = this.state.rowsPerPage - Math.min(this.state.rowsPerPage, rows.length - this.state.page * this.state.rowsPerPage);
     this.state.rows = rows;
     return (
-      <div className={classes.tableParent}>
+      <div>
         <div className={classes.root}>
           <Paper className={classes.root}>
             <div className={classes.tableWrapper}>

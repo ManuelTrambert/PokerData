@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { goTo } from '../../actions/changePage'
 import { withStyles } from '@material-ui/core/styles';
 import MenuList from "@material-ui/core/es/MenuList/MenuList";
 import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
 import ListItemIcon from "@material-ui/core/es/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/es/ListItemText/ListItemText";
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import StatsIcon from '@material-ui/icons/SignalCellularNull';
 
 const styles = theme => ({
   menuItem: {
@@ -29,26 +29,20 @@ const MenuBar = class MenuBar extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, goToPage } = this.props;
     return(
       <MenuList>
-        <MenuItem className={classes.menuItem}>
+        <MenuItem onClick={() => goToPage('/dashboard')} className={classes.menuItem}>
           <ListItemIcon className={classes.icon}>
-            <SendIcon />
+            <DashboardIcon/>
           </ListItemIcon>
-          <ListItemText classes={{ primary: classes.primary }} inset primary="Sent mail" />
+          <ListItemText classes={{ primary: classes.primary }} inset primary="Dashboard" />
         </MenuItem>
-        <MenuItem className={classes.menuItem}>
+        <MenuItem onClick={() => goToPage('/stats')} className={classes.menuItem}>
           <ListItemIcon className={classes.icon}>
-            <DraftsIcon />
+            <StatsIcon/>
           </ListItemIcon>
-          <ListItemText classes={{ primary: classes.primary }} inset primary="Drafts" />
-        </MenuItem>
-        <MenuItem className={classes.menuItem}>
-          <ListItemIcon className={classes.icon}>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText classes={{ primary: classes.primary }} inset primary="Inbox" />
+          <ListItemText classes={{ primary: classes.primary }} inset primary="Stats" />
         </MenuItem>
       </MenuList>
     );
@@ -56,9 +50,20 @@ const MenuBar = class MenuBar extends Component {
 }
 
 MenuBar.propTypes = {
+  goToPage: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => {
+  return ({
+  });
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return({
+    goToPage: (where) => goTo(where)(dispatch)
+  });
+};
 const styled = withStyles(styles, { name: 'MenuBar' })(MenuBar);
-const connected = connect()(styled);
+const connected = connect(mapStateToProps, mapDispatchToProps)(styled);
 export default connected;
