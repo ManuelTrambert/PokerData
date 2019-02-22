@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import DashboardArray from './DashboardArray';
-import PopOverForm from './PopOverForm';
-import StatsTool from '../Stats/Stats';
+import PopOverForm from '../dashboard/PopOverForm';
 
 const styles = theme => ({
   loginBarBox: {
@@ -31,11 +30,11 @@ const styles = theme => ({
     marginTop: '5%'
   },
   setFixedHeight: {
-    marginBottom: '30%'
+    marginBottom: '100%'
   }
 });
 
-const DashboardBar = class DashboardBar extends Component {
+const DashboardTournamentBar = class DashboardTournamentBar extends Component {
   constructor(props) {
     super(props);
   }
@@ -55,11 +54,14 @@ const DashboardBar = class DashboardBar extends Component {
             <Typography variant="h6">DASHBOARD</Typography>
           </div>
           <div>
+            <PopOverForm userId={userId}
+                         reloadDash={reloadDash}/>
+          </div>
+          <div>
             <DashboardArray
               classes={classes}
               rows={rows}
             />
-            <StatsTool rows={rows}/>
           </div>
         </div>
       </div>
@@ -67,10 +69,10 @@ const DashboardBar = class DashboardBar extends Component {
   }
 };
 
-DashboardBar.propTypes = {
+DashboardTournamentBar.propTypes = {
   classes: PropTypes.object.isRequired,
   userId: PropTypes.number.isRequired,
   rows: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(DashboardBar);
+export default withStyles(styles)(DashboardTournamentBar);

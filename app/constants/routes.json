@@ -3,5 +3,9 @@
   "LOGIN": "/login",
   "REGISTER": "/register",
   "DASHBOARD": "/dashboard",
+  "DASHBOARDFRIEND": "/dashboardfriend",
+  "TOURNAMENTSUSER": "/tournamentsuserpage",
+  "ASSISTANTHBH": "/assistanthbh",
+  "ASSISTANTTOURNAMENT": "/assistanttournament",
   "STATS": "/stats"
 }

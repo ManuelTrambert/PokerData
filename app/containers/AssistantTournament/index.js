@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import DashboardBar from './DashboardBar';
 import MenuBar from '../Menu/index';
 import TopBar from '../../containers/TopBar/index';
 
@@ -20,32 +19,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.contrastText,
     borderLeft: '1px solid #0a0b0d',
   },
-  fill: {
-    flexGrow: 1,
-    flexShrink: 1,
-    flexBasis: 'auto',
-  },
-  box: {
-    display: 'flex',
-    flexFlow: 'column',
-    height: '100%',
-  },
-  header: {
-    flex: '0 1 auto',
-    zIndex: '1',
-  },
-  content: {
-    display: 'flex',
-    flexFlow: 'column',
-    flex: '1 1 auto',
-    overflowY: 'auto',
-  },
-  footer: {
-    flex: '0 1 auto',
-  },
 });
 
-const DashboardPage = class DashboardPage extends Component {
+const AssistantTournamentPage = class AssistantTournamentPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -59,17 +35,16 @@ const DashboardPage = class DashboardPage extends Component {
           <MenuBar/>
         </Grid>
         <Grid item xs={10} className={classes.rightContent}>
-          <DashboardBar />
         </Grid>
       </Grid>
     );
   }
 }
 
-DashboardPage.propTypes = {
+AssistantTournamentPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styled = withStyles(styles, { name: 'DashboardPage' })(DashboardPage);
+const styled = withStyles(styles, { name: 'AssistantTournamentPage' })(AssistantTournamentPage);
 const connected = connect()(styled);
 export default connected;

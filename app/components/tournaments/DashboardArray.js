@@ -42,7 +42,7 @@ class DashboardArray extends Component {
   state = {
     rows: [],
     page: 0,
-    rowsPerPage: 5,
+    rowsPerPage: 15,
   };
 
   render() {
@@ -84,7 +84,7 @@ class DashboardArray extends Component {
                 <TableFooter>
                   <TableRow>
                     <TablePagination
-                      rowsPerPageOptions={[5]}
+                      rowsPerPageOptions={[5, 10, 15]}
                       colSpan={3}
                       count={rows.length}
                       rowsPerPage={this.state.rowsPerPage}

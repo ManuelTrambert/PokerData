@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
-import DashboardBar from './DashboardBar';
+import DashboardBar from './TournamentBar';
 import MenuBar from '../Menu/index';
 import TopBar from '../../containers/TopBar/index';
 
@@ -45,7 +45,7 @@ const styles = theme => ({
   },
 });
 
-const DashboardPage = class DashboardPage extends Component {
+const DashboardTournamentPage = class DashboardTournamentPage extends Component {
   constructor(props) {
     super(props);
   }
@@ -66,10 +66,10 @@ const DashboardPage = class DashboardPage extends Component {
   }
 }
 
-DashboardPage.propTypes = {
+DashboardTournamentPage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-const styled = withStyles(styles, { name: 'DashboardPage' })(DashboardPage);
+const styled = withStyles(styles, { name: 'DashboardTournamentPage' })(DashboardTournamentPage);
 const connected = connect()(styled);
 export default connected;

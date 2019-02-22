@@ -7,10 +7,16 @@ import MenuList from "@material-ui/core/es/MenuList/MenuList";
 import MenuItem from "@material-ui/core/es/MenuItem/MenuItem";
 import ListItemIcon from "@material-ui/core/es/ListItemIcon/ListItemIcon";
 import ListItemText from "@material-ui/core/es/ListItemText/ListItemText";
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import StatsIcon from '@material-ui/icons/SignalCellularNull';
+import DashboardIcon from '@material-ui/icons/Assignment';
+import TournamentIcon from '@material-ui/icons/List';
+import AssistantIcon from '@material-ui/icons/PermIdentity';
+import AssistantTournamentIcon from '@material-ui/icons/SupervisorAccount';
+import StatsIcon from '@material-ui/icons/Assessment';
 
 const styles = theme => ({
+  menuList: {
+    marginTop: '1px'
+  },
   menuItem: {
     '&:focus': {
       backgroundColor: theme.palette.primary.main,
@@ -18,6 +24,9 @@ const styles = theme => ({
         color: theme.palette.common.white,
       },
     },
+    border: '1px solid',
+    margin: '5px',
+    borderRadius: '16px'
   },
   primary: {},
   icon: {},
@@ -31,7 +40,7 @@ const MenuBar = class MenuBar extends Component {
   render() {
     const { classes, goToPage } = this.props;
     return(
-      <MenuList>
+      <MenuList className={classes.menuList}>
         <MenuItem onClick={() => goToPage('/dashboard')} className={classes.menuItem}>
           <ListItemIcon className={classes.icon}>
             <DashboardIcon/>
@@ -43,6 +52,24 @@ const MenuBar = class MenuBar extends Component {
             <StatsIcon/>
           </ListItemIcon>
           <ListItemText classes={{ primary: classes.primary }} inset primary="Stats" />
+        </MenuItem>
+        <MenuItem onClick={() => goToPage('/tournamentsuserpage')} className={classes.menuItem}>
+          <ListItemIcon className={classes.icon}>
+            <TournamentIcon/>
+          </ListItemIcon>
+          <ListItemText classes={{ primary: classes.primary }} inset primary="Tournois" />
+        </MenuItem>
+        <MenuItem onClick={() => goToPage('/assistanthbh')} className={classes.menuItem}>
+          <ListItemIcon className={classes.icon}>
+            <AssistantIcon/>
+          </ListItemIcon>
+          <ListItemText classes={{ primary: classes.primary }} inset primary="Assistant main par main" />
+        </MenuItem>
+        <MenuItem onClick={() => goToPage('/assistantTournament')} className={classes.menuItem}>
+          <ListItemIcon className={classes.icon}>
+            <AssistantTournamentIcon/>
+          </ListItemIcon>
+          <ListItemText classes={{ primary: classes.primary }} inset primary="Assistant tournoi" />
         </MenuItem>
       </MenuList>
     );

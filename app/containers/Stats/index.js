@@ -9,6 +9,7 @@ import StatsMoneyTool from '../../components/Stats/StatsMoney';
 import StatsPositionPercentTool from '../../components/Stats/StatsPositionPercent';
 import api from '../../api';
 import Typography from "@material-ui/core/es/Typography/Typography";
+import TopBar from '../../containers/TopBar/index';
 
 const styles = theme => ({
   root: {
@@ -19,13 +20,16 @@ const styles = theme => ({
   },
   leftContent: {
     padding: '0px !important',
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#FFFFFF',
+  },
+  headerTitle: {
+    margin: 'auto',
+    textAlign: 'center'
   },
   rightContent: {
     zIndex: 10,
     backgroundColor: theme.palette.primary.contrastText,
     borderLeft: '1px solid #0a0b0d',
-    marginTop: 10,
     marginBottom: '100%'
   },
 });
@@ -41,24 +45,16 @@ const StatsPage = class StatsPage extends Component {
 
   async getData() {
     const rows = await api.get(`Tournaments/${this.state.userId}/user`);
-    this.setState({rows: rows.data});
-  }
-
-  async getStatsMoney() {
-    const rows = await api.get(`Tournaments/${this.state.userId}/stats`);
-    rows.data.forEach(tournament => {
-      tournament.date = tournament.date.substr(5, 5);
-    });
-    this.setState({moneyRows: rows.data});
-  }
-
-  async getPercentStats() {
-    const rows = await api.get(`Tournaments/${this.state.userId}/statspercent`);
-    rows.data.forEach(tournament => {
+    const rowPercent = await api.get(`Tournaments/${this.state.userId}/statspercent`);
+    rowPercent.data.forEach(tournament => {
       console.log(typeof tournament.createdAt);
       tournament.createdAt = tournament.createdAt.substr(5, 5);
     });
-    this.setState({percentRows: rows.data});
+    const rowStats = await api.get(`Tournaments/${this.state.userId}/stats`);
+    rowStats.data.forEach(tournament => {
+      tournament.date = tournament.date.substr(5, 5);
+    });
+    this.setState({moneyRows: rowStats.data, percentRows: rowPercent.data, rows: rows.data});
   }
 
   render() {
@@ -69,11 +65,14 @@ const StatsPage = class StatsPage extends Component {
       return (
         <div>
           <Grid container className={classes.root}>
+            <TopBar/>
             <Grid item xs={2} className={classes.leftContent}>
               <MenuBar/>
             </Grid>
             <Grid item xs={10} className={classes.rightContent}>
-              <Typography variant="h6" className={classes.headerTitle}>STATISTIQUES</Typography>
+              <div className={classes.headerTitle}>
+                <Typography variant="h6">STATISTIQUES</Typography>
+              </div>
               <StatsTool rows={this.state.rows}/>
               <StatsMoneyTool rows={this.state.moneyRows}/>
               <div className={classes.showBottom}>
@@ -84,9 +83,9 @@ const StatsPage = class StatsPage extends Component {
         </div>
       );
     } else {
+      console.log('La?');
+
       this.getData();
-      this.getStatsMoney();
-      this.getPercentStats();
       return (<span></span>);
     }
   }

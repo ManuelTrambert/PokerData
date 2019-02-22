@@ -38,7 +38,7 @@ export function register({identifier, password, email, firstname, lastname}) {
     dispatch(startSubmit('registerForm'));
     try {
       const res = await api.post('/users', {
-        identifier,
+        username: identifier,
         password,
         email,
         firstname,
@@ -51,5 +51,6 @@ export function register({identifier, password, email, firstname, lastname}) {
       });
     }
     dispatch(stopSubmit('loginForm'));
+    return res;
   };
 }
