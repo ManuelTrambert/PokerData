@@ -16,7 +16,14 @@ const styles = theme => ({
     flexGrow: 1,
   },
   showBottom: {
-    marginBottom: '100%'
+    marginBottom: '100%',
+    margin: 'auto',
+    textAlign: 'center'
+  },
+  line: {
+    borderBottom: '1px solid #000000',
+    marginBottom: '10px',
+    marginTop: '10px'
   },
   leftContent: {
     padding: '0px !important',
@@ -24,7 +31,8 @@ const styles = theme => ({
   },
   headerTitle: {
     margin: 'auto',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginTop: '10px'
   },
   rightContent: {
     zIndex: 10,
@@ -71,11 +79,20 @@ const StatsPage = class StatsPage extends Component {
             </Grid>
             <Grid item xs={10} className={classes.rightContent}>
               <div className={classes.headerTitle}>
-                <Typography variant="h6">STATISTIQUES</Typography>
+                <Typography variant="h5">STATISTIQUES</Typography>
               </div>
-              <StatsTool rows={this.state.rows}/>
-              <StatsMoneyTool rows={this.state.moneyRows}/>
+              <div className={classes.line}>
+              </div>
+              <div className={classes.headerTitle}>
+                <Typography variant="h6">Positions</Typography>
+                <StatsTool rows={this.state.rows}/>
+              </div>
+              <div className={classes.headerTitle}>
+                <Typography variant="h6">Argent gagné/perdu</Typography>
+                <StatsMoneyTool rows={this.state.moneyRows}/>
+              </div>
               <div className={classes.showBottom}>
+                <Typography variant="h6">Position moyenne en %</Typography>
                 <StatsPositionPercentTool rows={this.state.percentRows}/>
               </div>
             </Grid>
@@ -83,7 +100,6 @@ const StatsPage = class StatsPage extends Component {
         </div>
       );
     } else {
-      console.log('La?');
 
       this.getData();
       return (<span></span>);

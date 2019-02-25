@@ -51,7 +51,7 @@ const DashboardTournamentBar = class DashboardTournamentBar extends Component {
       <div className={classes.setFixedHeight}>
         <div className={classes.loginBarBox}>
           <div className={classes.headerTitle}>
-            <Typography variant="h6">DASHBOARD</Typography>
+            <Typography variant="h6">TOURNAMENT</Typography>
           </div>
           <div>
             <PopOverForm userId={userId}

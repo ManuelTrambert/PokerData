@@ -24,7 +24,7 @@ const StatsPositionPercentTool = class StatsPositionPercentTool extends Componen
     return (
       <div>
         <div className={classes.spaceBetween}>
-          <LineChart width={1300} height={300} data={rows}>
+          <LineChart width={1300} height={200} data={rows}>
             <Line type="monotone" dataKey="pos" stroke="#8884d8" />
             <CartesianGrid stroke="#ccc" />
             <XAxis dataKey="createdAt" />

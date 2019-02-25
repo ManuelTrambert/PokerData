@@ -7,6 +7,11 @@ import PopOverForm from './PopOverForm';
 import StatsTool from '../Stats/Stats';
 
 const styles = theme => ({
+  line: {
+    borderBottom: '1px solid #000000',
+    marginBottom: '10px',
+    marginTop: '10px'
+  },
   loginBarBox: {
     paddingLeft: '2%',
     paddingRight: '2%'
@@ -53,6 +58,8 @@ const DashboardBar = class DashboardBar extends Component {
         <div className={classes.loginBarBox}>
           <div className={classes.headerTitle}>
             <Typography variant="h6">DASHBOARD</Typography>
+          </div>
+          <div className={classes.line}>
           </div>
           <div>
             <DashboardArray

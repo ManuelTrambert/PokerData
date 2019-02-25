@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import {LineChart, Line, CartesianGrid, XAxis, YAxis} from 'recharts';
+import {Pie} from 'react-chartjs-2';
 
 const styles = theme => ({
   spaceBetween: {
@@ -10,7 +10,7 @@ const styles = theme => ({
 });
 
 
-const StatsMoneyTool = class StatsMoneyTool extends Component {
+const PieTool = class PieTool extends Component {
   constructor(props) {
     super(props);
   }
@@ -21,24 +21,31 @@ const StatsMoneyTool = class StatsMoneyTool extends Component {
       classes,
     } = this.props;
 
+    console.log(rows);
     return (
       <div>
         <div className={classes.spaceBetween}>
-          <LineChart width={1300} height={200} data={rows}>
-            <Line type="monotone" dataKey="gain" stroke="#8884d8" />
-            <CartesianGrid stroke="#ccc" />
-            <XAxis dataKey="date" />
-            <YAxis />
-          </LineChart>
+          <Pie data={rows} width={300}
+               height={300}
+               options={{
+                 maintainAspectRatio: false,
+                 legend: {
+                   position: 'left',
+                   labels: {
+                     fontSize: 18
+                   }
+                 }
+               }}
+          />
         </div>
       </div>
     )
   }
 };
 
-StatsMoneyTool.propTypes = {
+PieTool.propTypes = {
   classes: PropTypes.object.isRequired,
   rows: PropTypes.array.isRequired,
 };
 
-export default withStyles(styles)(StatsMoneyTool);
+export default withStyles(styles)(PieTool);
