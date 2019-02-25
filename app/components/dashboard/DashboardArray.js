@@ -58,10 +58,10 @@ class DashboardArray extends Component {
               <Table className={classes.table}>
                 <TableHead>
                   <TableRow>
-                    <TableCell align="right">Name</TableCell>
-                    <TableCell align="right">Price</TableCell>
-                    <TableCell align="right">Difference</TableCell>
-                    <TableCell align="right">Number of players</TableCell>
+                    <TableCell align="right">Nom du tournoi</TableCell>
+                    <TableCell align="right">Prix</TableCell>
+                    <TableCell align="right">Gain</TableCell>
+                    <TableCell align="right">Nombre de joueurs</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

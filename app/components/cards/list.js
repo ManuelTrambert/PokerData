@@ -6,6 +6,7 @@ import FormLabel from '@material-ui/core/es/FormLabel/FormLabel';
 import FormControlLabel from '@material-ui/core/es/FormControlLabel/FormControlLabel';
 import FormGroup from '@material-ui/core/es/FormGroup/FormGroup';
 import Checkbox from '@material-ui/core/es/Checkbox/Checkbox';
+import Typography from "@material-ui/core/es/Typography/Typography";
 
 const styles = theme => ({
   spaceBetween: {
@@ -85,7 +86,7 @@ const CardsTool = class CardsTool extends Component {
                     this.handleChange('KING')(e);
                   }} value='KING'/>
                 }
-                label='KING'
+                label='Roi'
               />
               <FormControlLabel
                 control={
@@ -98,7 +99,7 @@ const CardsTool = class CardsTool extends Component {
                     value='QUEEN'
                   />
                 }
-                label='QUEEN'
+                label='Dame'
               />
               <FormControlLabel
                 control={
@@ -111,7 +112,7 @@ const CardsTool = class CardsTool extends Component {
                     value='JACK'
                   />
                 }
-                label='JACK'
+                label='Valet'
               />
               <FormControlLabel
                 control={
@@ -120,7 +121,7 @@ const CardsTool = class CardsTool extends Component {
                     this.handleChange('TEN')(e);
                   }} value='TEN'/>
                 }
-                label='TEN'
+                label='10'
               />
               <FormControlLabel
                 control={
@@ -130,7 +131,7 @@ const CardsTool = class CardsTool extends Component {
                   }}
                             value='NINE'/>
                 }
-                label='NINE'
+                label='9'
               />
               <FormControlLabel
                 control={
@@ -143,7 +144,7 @@ const CardsTool = class CardsTool extends Component {
                     value='EIGHT'
                   />
                 }
-                label='EIGHT'
+                label='8'
               />
               <FormControlLabel
                 control={
@@ -156,7 +157,7 @@ const CardsTool = class CardsTool extends Component {
                     value='SEVEN'
                   />
                 }
-                label='SEVEN'
+                label='7'
               />
               <FormControlLabel
                 control={
@@ -165,7 +166,7 @@ const CardsTool = class CardsTool extends Component {
                     this.handleChange('SIX')(e);
                   }} value='SIX'/>
                 }
-                label='SIX'
+                label='6'
               />
               <FormControlLabel
                 control={
@@ -175,7 +176,7 @@ const CardsTool = class CardsTool extends Component {
                   }}
                             value='FIVE'/>
                 }
-                label='FIVE'
+                label='5'
               />
               <FormControlLabel
                 control={
@@ -188,7 +189,7 @@ const CardsTool = class CardsTool extends Component {
                     value='FOUR'
                   />
                 }
-                label='FOUR'
+                label='4'
               />
               <FormControlLabel
                 control={
@@ -201,7 +202,7 @@ const CardsTool = class CardsTool extends Component {
                     value='THREE'
                   />
                 }
-                label='THREE'
+                label='3'
               />
               <FormControlLabel
                 control={
@@ -214,7 +215,7 @@ const CardsTool = class CardsTool extends Component {
                     value='TWO'
                   />
                 }
-                label='TWO'
+                label='2'
               />
             </FormGroup>
           </FormControl>
@@ -229,7 +230,7 @@ const CardsTool = class CardsTool extends Component {
                   }}
                             value='HEART'/>
                 }
-                label='HEART'
+                label='Coeur'
               />
               <FormControlLabel
                 control={
@@ -239,7 +240,7 @@ const CardsTool = class CardsTool extends Component {
                   }}
                             value='SPADE'/>
                 }
-                label='SPADE'
+                label='Pique'
               />
               <FormControlLabel
                 control={
@@ -252,7 +253,7 @@ const CardsTool = class CardsTool extends Component {
                     value='DIAMOND'
                   />
                 }
-                label='DIAMOND'
+                label='Carreau'
               />
               <FormControlLabel
                 control={
@@ -265,7 +266,7 @@ const CardsTool = class CardsTool extends Component {
                     value='CLUB'
                   />
                 }
-                label='CLUB'
+                label='Trèfles'
               />
             </FormGroup>
           </FormControl>
