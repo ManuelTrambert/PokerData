@@ -35,9 +35,10 @@ const PopOverForm = class PopOverForm extends Component {
     open: false,
     name: '',
     price: '0',
-    nbPlayer: '0',
+    nbPlayers: '0',
     pos: '0',
-    userId: '0'
+    userId: '0',
+    difference: '0'
   };
 
   handleClickOpen = () => {

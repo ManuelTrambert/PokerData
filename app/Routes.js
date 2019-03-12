@@ -11,6 +11,7 @@ import TournamentsUserPage from './containers/TournamentsUser/Loadable';
 import DashboardPage from './containers/Dashboard/Loadable';
 import AssistantHBHPage from './containers/AssistantHandByHand/Loadable';
 import AssistantTournamentPage from './containers/AssistantTournament/Loadable';
+import VsCalculator from './containers/VsCalculator/Loadable';
 import StatsPage from './containers/Stats/Loadable';
 
 export default () => (
@@ -24,6 +25,7 @@ export default () => (
       <Route path={routes.STATS} component={StatsPage} />
       <Route path={routes.ASSISTANTHBH} component={AssistantHBHPage} />
       <Route path={routes.ASSISTANTTOURNAMENT} component={AssistantTournamentPage} />
+      <Route path={routes.VSCALCULATOR} component={VsCalculator} />
       <Route path={routes.HOME} component={HomePage} />
     </Switch>
   </App>

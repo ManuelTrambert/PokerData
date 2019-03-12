@@ -11,6 +11,7 @@ import DashboardIcon from '@material-ui/icons/Assignment';
 import TournamentIcon from '@material-ui/icons/List';
 import AssistantIcon from '@material-ui/icons/PermIdentity';
 import AssistantTournamentIcon from '@material-ui/icons/SupervisorAccount';
+import VsIcon from '@material-ui/icons/DialPad';
 import StatsIcon from '@material-ui/icons/Assessment';
 
 const styles = theme => ({
@@ -70,6 +71,12 @@ const MenuBar = class MenuBar extends Component {
             <AssistantTournamentIcon/>
           </ListItemIcon>
           <ListItemText classes={{ primary: classes.primary }} inset primary="Assistant tournoi" />
+        </MenuItem>
+        <MenuItem onClick={() => goToPage('/vscalculator')} className={classes.menuItem}>
+          <ListItemIcon className={classes.icon}>
+            <VsIcon/>
+          </ListItemIcon>
+          <ListItemText classes={{ primary: classes.primary }} inset primary="VS calculator" />
         </MenuItem>
       </MenuList>
     );
